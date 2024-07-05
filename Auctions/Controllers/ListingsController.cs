@@ -30,7 +30,7 @@ namespace Auctions.Controllers
             var applicationDbContext = _listingsService.GetAll();
             return View(await applicationDbContext.ToListAsync());
         }
-        /*
+
         // GET: Listings/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -39,9 +39,8 @@ namespace Auctions.Controllers
                 return NotFound();
             }
 
-            var listing = await _context.Listings
-                .Include(l => l.User)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var listing = await _listingsService.GetById(id);
+
             if (listing == null)
             {
                 return NotFound();
@@ -49,7 +48,7 @@ namespace Auctions.Controllers
 
             return View(listing);
         }
-        */
+
 
         // GET: Listings/Create
         public IActionResult Create()
